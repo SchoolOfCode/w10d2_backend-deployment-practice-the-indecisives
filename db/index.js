@@ -1,8 +1,12 @@
 import pg from "pg";
-import { db } from "../config/index.js";
 
+const pk = process.env
 export const pool = new pg.Pool({
-  connectionString: db.DATABASE_URL,
+  user: pk.PGUSER,
+  host: pk.PGHOST,
+  database: pk.PGDATABASE,
+  password: pk.PGPASSWORD,
+  port: pk.PGPORT,
   ssl: {
     rejectUnauthorized: false,
   },
